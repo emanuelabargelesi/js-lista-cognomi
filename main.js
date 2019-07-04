@@ -28,5 +28,5 @@ for (var i = 0; i < cognomi.length; i++) {
 
 //stampa la posizione del cognome utente
   var a = cognomi.indexOf(cognome);
-  document.getElementById("posizione").innerHTML = "La tua posizione è: " + a;
+  document.getElementById("posizione").innerHTML = "La tua posizione è: " + (a + 1);
 }
