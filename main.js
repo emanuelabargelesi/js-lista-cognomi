@@ -1,32 +1,36 @@
-//lista array di cognomi
+// Chiedi all’utente il cognome, inseriscilo in un array con altri cognomi e stampa la lista ordinata alfabeticamente.
+// Scrivi a che posizione della lista il nuovo utente si trova
+
+//lista array cognomi
 var cognomi = [
-  'Kent',
-  'Banner',
-  'Wayne',
   'Parker',
-  'Prince'
+  'Wayne',
+  'Bruce',
+  'Ross',
+  'anakin'
 ];
 
-//do la variabile elemento alla stringa document.getElementById("listacognomi"); solo per non doverla ripetere in caso
-//si riutilizzasse all'interno del codice
-var elemento = document.getElementById("listacognomi");
+//domandare cognome utente
+var richiesta = prompt("Ciao, scrivi il tuo cognome").toUpperCase();
+//richiesta = richiesta.toUpperCase();
 
+// inserire cognome utente in lista array cognomi
+cognomi.push(richiesta);
 
-//chiedi cognome all'utente e con .toUpperCase() lo trasporma poiché se gli array sono con lettera capitale per
-//inserirlo correttamente nella posizione in ordine alfabetico dovrà essere anche esso con lettera capitale (o tutto maiuscolo)
-// o posso trasformare tutto minuscolo con .toLowerCase();
-var cognome = prompt("Scrivi il tuo cognome").toUpperCase();
-
-
-//inserisci cognome nella listacognomi
-cognomi.push(cognome);
-
-//stampa la lista ordinata alfabeticamente
 for (var i = 0; i < cognomi.length; i++) {
-
-  elemento.innerHTML = cognomi.sort();
-
-//stampa la posizione del cognome utente
-  var a = cognomi.indexOf(cognome);
-  document.getElementById("posizione").innerHTML = "La tua posizione è: " + (a + 1);
+  cognomi[i] = cognomi[i].toUpperCase();
 }
+
+//la variabile e il sort sono inseriti esternamente al ciclo for in quanto altrimenti andrebbero ripetute quante volte viene ripetuto
+//il ciclo, andando unicamente ad appesantire il lavoro (il ciclo le rielaborerebbe a ogni giro)
+var elemento;
+cognomi.sort();
+
+//stampare lista array cognomi in ordine alfabetico e la posizione in lista del cognome dell'utente pushato
+for (var i = 0; i < cognomi.length; i++) {
+  //la variabile la inseriamo nel for poiché deve essere costantemente aggiornata e popolata di conseguenza alla stringa sotto
+  elemento = document.getElementById("listacognomi").innerHTML;
+  document.getElementById("listacognomi").innerHTML = elemento + '<li>' + cognomi[i] + '</li>';
+}
+
+document.getElementById("posizione").innerHTML = cognomi.indexOf(richiesta) + 1;
