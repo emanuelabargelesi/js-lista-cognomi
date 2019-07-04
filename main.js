@@ -5,9 +5,9 @@
 var cognomi = [
   'Parker',
   'Wayne',
-  'Bruce',
+  'Baggins',
   'Ross',
-  'anakin'
+  'skywalker'
 ];
 
 //domandare cognome utente
